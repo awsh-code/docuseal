@@ -10,7 +10,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - _data:/data
-      - _app:/app
+ #     - _app:/app
     environment:
       - FORCE_SSL=${HOST}
       - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/docuseal
