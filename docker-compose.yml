@@ -6,10 +6,8 @@ services:
       postgres:
         condition: service_healthy
     image: docuseal/docuseal:latest
-    ports:
-      - 3000:3000
     volumes:
-      - .:/data
+      - _data:/data
     environment:
       - FORCE_SSL=${HOST}
       - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/docuseal
@@ -27,3 +25,7 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+
+volumes:
+  _data:
+    driver: local
