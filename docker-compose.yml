@@ -8,6 +8,7 @@ services:
     image: docuseal/docuseal:latest
     volumes:
       - _data:/data
+      - _app:/app
     environment:
       - FORCE_SSL=${HOST}
       - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/docuseal
@@ -15,7 +16,7 @@ services:
   postgres:
     image: postgres:15
     volumes:
-      - './pg_data:/var/lib/postgresql/data'
+      -  _db_data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -28,4 +29,8 @@ services:
 
 volumes:
   _data:
+    driver: local
+  _app:
+    driver: local
+  _db_data:
     driver: local
