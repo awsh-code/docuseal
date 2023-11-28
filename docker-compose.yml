@@ -5,7 +5,9 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-    image: docuseal/docuseal:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - _data:/data
       - _app:/app
